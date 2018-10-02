@@ -1,0 +1,10 @@
+print ("Hello strangers, could you type on characters to set up your beutiful eyes please")
+eye = str (input())
+
+print("#############")
+print("#           #")
+print("#  " +eye+"     "+ eye +"  #")
+print("#    ###    #")
+print("#-----------#")
+print("#           #")
+print("#############")
