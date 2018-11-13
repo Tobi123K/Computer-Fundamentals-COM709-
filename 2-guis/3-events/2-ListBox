@@ -1,0 +1,75 @@
+from tkinter import *
+from tkinter import messagebox
+
+class SongGui(Tk):
+    
+    def __init__(self):
+        super().__init__()
+        
+        # set window attributes
+        self.title("Awesome, Song Maker")
+        
+        # add components
+        self.add_heading_label()
+        self.add_lyric_label()
+        self.add_lyric_frame()
+        self.add_lyric_entry()
+        self.add_add_button()
+        self.add_another_lyric_label()
+        self.add_box_listbox()
+        
+    def add_heading_label(self):
+        self.heading_label = Label(text="Song Maker")
+        self.heading_label.pack(fill=X)
+        self.heading_label.configure(bg="#f00",
+                                     font="Arial 24",
+                                     pady = 4)
+
+    def add_lyric_label(self):
+        self.lyric_label = Label()
+        self.lyric_label.pack(fill=X)
+        self.lyric_label.configure(anchor="w",
+                                   bg="#0f0",
+                                   font= "Arial 10",
+                                   pady = 4,
+                                   text="Lyric to add:")
+        
+    def add_lyric_frame(self):
+        #1.object
+        self.lyric_frame = Frame()
+        self.lyric_frame.pack()
+        self.lyric_frame.configure(bg="#eee")
+
+    def add_lyric_entry(self):
+        self.lyric_entry = Entry(self.lyric_frame)
+        self.lyric_entry.pack(side=LEFT)
+        self.lyric_entry.configure(bg="white",
+                                   width=50)
+        
+    def add_add_button(self):
+        # create
+        self.submit_button = Button(self.lyric_frame)
+        self.submit_button.pack(side = RIGHT)
+        # style
+        self.submit_button.configure(text="Add")
+        # bind events
+        self.submit_button.bind("<ButtonRelease-1>", self.submit_button_clicked)
+
+    def submit_button_clicked(self, event):
+        num_tickets = self.tickets_entry.get()
+        messagebox.showinfo("Gui", "You have purchased " + num_tickets + " tickets!")
+
+    def add_another_lyric_label(self):
+        self.another_lyric = Label()
+        self.another_lyric.pack(side = LEFT)
+        self.another_lyric.configure(anchor="w",
+                                   bg="#0f0",
+                                   font= "Arial 10",
+                                   pady = 4,
+                                   text="Lyrics:")
+        
+    def add_box_listbox(self):
+        self.add_box_listbox_ = Listbox()
+        self.add_box_listbox.pack()
+        self.add_box_listbox.configure()
+        
