@@ -1,0 +1,60 @@
+from tkinter import *
+
+class Gui(Tk):
+    
+    def __init__(self):
+        super().__init__()
+
+        # load resources
+        self.cactus_image = PhotoImage(file ="cacti.gif")
+        self.cactus_names_image = PhotoImage(file ="cacti_names.gif")
+        
+        
+        # set window attributes
+        self.title("Gui")
+        
+        # add components
+        self.add_cactus_image_label()
+        self.add_cactus_leaves_label()
+        self.add_flip_button()
+        
+        
+    def add_cactus_leaves_label(self): 
+        self.cactus_leaves_label = Label(text="Cactus Leaves")
+        self.cactus_leaves_label.grid(row =0, column = 1)
+        self.cactus_leaves_label.configure(font="Arial 14",
+                                     pady = 10)
+
+    def add_cactus_image_label(self):
+        self.cactus_image_label = Label()
+        self.cactus_image_label.grid(row=1, column=1)
+        self.cactus_image_label.configure(image=self.cactus_image,
+                                             height=400,
+                                             width=400)
+        
+
+    def add_flip_button(self):
+        self.flip_button = Button()
+        self.flip_button.grid(row=2, column=1)
+        self.flip_button.configure(text = "Flip", font = "Arial 14")
+        self.flip_button.bind("<Button-1>", self.left_mouse_clicked)
+        self.flip_button.bind("<Button-3>", self.right_mouse_clicked)
+        
+    
+    def left_mouse_clicked(self,event):
+        self.cactus_image_label.configure(image=self.cactus_names_image,
+                                             height=400,
+                                             width=400)
+    def right_mouse_clicked(self,event):
+        self.cactus_image_label.configure(image=self.cactus_image,
+                                             height=400,
+                                             width=400)
+        
+        
+
+
+
+# Create an object of the Gui class when this module is executed
+if (__name__ == "__main__"):
+    gui = Gui()
+    gui.mainloop()
