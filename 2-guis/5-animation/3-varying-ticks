@@ -1,0 +1,123 @@
+from tkinter import *
+import time
+
+# the class
+class warcraftanimation(Tk):
+    def __init__(self):
+        super().__init__()
+        
+        # load resources
+        self.ork_image = PhotoImage(file="ork.gif")
+        self.elf_image = PhotoImage(file="elf.gif")
+        self.lking_image = PhotoImage(file="LichKing.gif")
+        
+        
+        # set window attributes
+        self.configure(height=2000,
+                       width=2000)
+
+        # set animation attributes
+        self.ork_x_pos = 10
+        self.ork_y_pos = 10
+        self.ork_x_change = 10
+        self.ork_y_change = 0
+
+        self.elf_x_pos = 50
+        self.elf_y_pos = 250
+        self.elf_x_change = 40
+        self.elf_y_change = 0
+
+        self.lking_x_pos = 50
+        self.lking_y_pos = 500
+        self.lking_x_change = 60
+        self.lking_y_change = 0
+
+        self.num_ticks = 0
+
+        
+        
+        
+        
+        # add components
+        self.add_ork_image_label()
+        self.add_elf_image_label()
+        self.add_lking_image_label()
+        
+        # start the timer
+        self.tick()
+        
+    # the timer tick function    
+    def tick(self):
+        self.num_ticks += 1
+
+        if (self.num_ticks % 2 == 0):
+             
+            self.ork_x_pos = self.ork_x_pos + self.ork_x_change
+            self.ork_y_pos = self.ork_y_pos + self.ork_y_change
+
+            self.ork_image_label.place(x=self.ork_x_pos,
+                                        y=self.ork_y_pos)
+            # if statment for orks
+            if (self.ork_x_pos >= 500):
+                self.ork_x_change = self.ork_x_change * (-1)
+            if (self.ork_x_pos <= 10):
+                self.ork_x_change = self.ork_x_change * (-1)
+                
+        if (self.num_ticks % 4 == 0):
+        
+            self.elf_x_pos = self.elf_x_pos + self.elf_x_change
+            self.elf_y_pos = self.elf_y_pos + self.elf_y_change
+
+            self.elf_image_label.place(x=self.elf_x_pos,
+                                    y=self.elf_y_pos)
+            # if statment for elf
+            if (self.elf_x_pos >= 500):
+                self.elf_x_change = self.elf_x_change * (-1)
+            if (self.elf_x_pos <= 10):
+                self.elf_x_change = self.elf_x_change * (-1)
+                
+        if (self.num_ticks % 8 == 0):
+
+            self.lking_x_pos = self.lking_x_pos + self.lking_x_change
+            self.lking_y_pos = self.lking_y_pos + self.lking_y_change
+
+            self.lking_image_label.place(x=self.lking_x_pos,
+                                    y=self.lking_y_pos)
+            # if statment for elf
+            if (self.lking_x_pos >= 500):
+                self.lking_x_change = self.lking_x_change * (-1)
+            if (self.lking_x_pos <= 10):
+                self.lking_x_change = self.lking_x_change * (-1)
+
+
+
+        
+        self.after(40, self.tick)
+
+        
+        
+        
+
+    # the ball image
+    def add_ork_image_label(self):
+        self.ork_image_label = Label()
+        self.ork_image_label.place(x=self.ork_x_pos,
+                                    y=self.ork_y_pos)
+        self.ork_image_label.configure(image=self.ork_image)
+
+    def add_elf_image_label(self):
+        self.elf_image_label = Label()
+        self.elf_image_label.place(x=self.elf_x_pos,
+                                    y=self.elf_y_pos)
+        self.elf_image_label.configure(image=self.elf_image)
+
+    def add_lking_image_label(self):
+        self.lking_image_label = Label()
+        self.lking_image_label.place(x=self.lking_x_pos,
+                                    y=self.lking_y_pos)
+        self.lking_image_label.configure(image=self.lking_image)
+     
+# the object
+if __name__ == "__main__":
+    gui = warcraftanimation()    
+    gui.mainloop()
