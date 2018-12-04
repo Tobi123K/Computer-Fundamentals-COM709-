@@ -1,4 +1,4 @@
-#import everything from tkinter
+    #import everything from tkinter
 from tkinter import*
 
 class NewsLetterGui (Tk):
@@ -33,24 +33,28 @@ class NewsLetterGui (Tk):
         self.enter_smth.pack(fill=X)
         #2. configure
         self.enter_smth.configure(font="Arial 10",
-                                     pady = 4)
+                                     pady = 10)
     def add_email_frame(self):
         #1.object
         self.email_frame = Frame()
         self.email_frame.pack( fill=X)
-        self.email_frame.configure(bg="#eee")
+        self.email_frame.configure(bg="#eee",pady = 20)
 
         self.email_label = Label(self.email_frame, text="Email")
         self.email_label.pack( side = LEFT, fill=X)
-        self.email_label.configure(font="Arial 10",
-                                     pady = 3)
+        self.email_label.configure(font="Arial 10",)
 
         self.email_entry = Entry(self.email_frame)
         self.email_entry.pack( fill=X)
         self.email_entry.configure(bg="white",
-                       width=50)
+                                   width=30)
     def add_subscribe_button(self):
         #1. object
         self.subcribe_button = Button(text = "Subscribe")
-        self.subcribe_button.pack(side = BOTTOM)
-        self.subcribe_button.configure(bg="#eee",font="Arial 8", width=8, height= 1, pady = 1 )
+        self.subcribe_button.pack(side = BOTTOM, fill=X)
+        self.subcribe_button.configure(bg="#fee",font="Arial 8", width=30, height= 1, pady = 4)
+
+# the object
+if __name__ == "__main__":
+    gui = NewsLetterGui()    
+    gui.mainloop()
